@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+
+		<link rel="stylesheet" href="css/style.css" />
+
+		<!-- Roboto font -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="../css/style.css" />
+
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="../src/App.js" defer></script>
+		<title>Smart Farm</title>
+		<script src="./app.js"></script>
+		<script defer src="../src/itemGenerator.js"></script>
+		<link href="./styles.css" rel="stylesheet">
+	</head>
+	<body>
+
+		<!-- Cart -->
+		<div id="cart-screen" class="absolute z-10 w-[50vw] bg-white h-[100vh] right-0  flex flex-col invisible" >
+			<div class="h-[15%] w-full bg-slate-700 flex justify-center items-center">
+				<h1 class="text-6xl text-yellow-600">Cart</h1>
+				<button id="close-cart" class="absolute left-5 text-3xl text-white">X</button>
+			</div>
+
+			<div class="cart px-5">
+				<ul id="cart-items" >
+					<!-- Cart items will be listed here by JavaScript -->
+				</ul>
+				<p class="text-lg font-semibold">Total: <span id="cart-total">$0.00</span></p>
+				<button id="checkout-button" class="border border-blue-600 rounded-md p-3">Proceed to Checkout</button>
+			</div>
+
+
+		</div>
+
+<!-- style="background-image: url('https://4e037f6759177f3fda8f-9baaa4c623a22d5224640e7dc009f613.ssl.cf1.rackcdn.com/Farmer-Portrait.jpg')" -->
+		<nav
+			class="py-4 px-4 justify-between max-w-10 shadow-lg shadow-pink-100 mx-auto font-bold bg-black text-white"
+		>
+			<div class="navBar flex justify-between">
+				<!-- Right Container -->
+				<div class="flex justify-between items-center">
+					<img
+						src="../css/Smart Farm-logo.jpeg"
+						class="mx-10"
+						width="40px"
+					/>
+					<ul class="flex space-x-4">
+						<a href="./index.html"
+							><li class="Home page">Home</li></a
+						>
+						<a href="./Insecticides.html"
+							><li class=" ">Insectisides</li></a
+						>
+						<a href="../components/Sell.html"
+							><li class="">Sell</li></a
+						>
+						<a href="../components/Consult.html"
+							><li class=" ">Consult</li></a
+						>
+					</ul>
+				</div>
+
+				<!-- Left Container -->
+				<div class="items-center flex">
+					<!-- <input class="justify-right" placeholder="Search"
+                  class="" value="" />  -->
+					<div class="h-full flex m-1.3">
+						<input
+							type="text"
+							placeholder="Search for Product,Consult.....! "
+							class="rounded-xl text-black"
+						/>
+					</div>
+
+					<a href="../components/login.html">
+						<div class="WishList mx-4 flex">
+							Profile
+							<!-- <img src="https://cdn.onlinewebfonts.com/svg/img_202755.png" width="20px" /> -->
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-6 h-6"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+								/>
+							</svg></div
+					></a>
+					<button id="show-cart">
+						<div class="cart mx-4 flex">
+							Cart
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+								class="w-6 h-6">
+								<path stroke-linecap="round" stroke-linejoin="round"
+									d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+							</svg>
+						</div>
+					</button>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Item Bar Section -->
+		<section id="itemBar" class="my-8 mb-[50px]">
+			<!-- Items Container -->
+			<div
+				class="container mx-auto flex justify-around items-baseline max-w-[880px]"
+			>
+				<!-- Item 1 -->
+				<a href="../components/Insecticides.html">
+					<div class="flex flex-col justify-center">
+						<img
+							src="https://cdn.shopify.com/s/files/1/0722/2059/files/Web-Tiles_insecticides_7439b844-73ba-4f81-8c6b-204504c19a76_720x.jpg?v=1686382277"
+							class="h-20 w-20 rounded-full hover:-translate-y-0.5 transition duration-150"
+							style="
+								border: 4px solid rgb(188, 78, 9);
+							"
+						/>
+						<p class="font-bold">Insecticides</p>
+					</div>
+				</a>
+
+				<!-- Item 2 -->
+				<a href="../components/essential.html">
+					<div
+						class="flex flex-col justify-center items-center"
+					>
+						<img
+							src="https://cdn.shopify.com/s/files/1/0722/2059/files/Web-Tiles_growth-promoters_45863373-746e-456c-8d0b-31c397529cd7_720x.jpg?v=1686382395"
+							class="h-20 w-20 rounded-full hover:-translate-y-0.5 transition duration-150"
+							style="
+								border: 5px solid rgb(188, 78, 9);
+							"
+						/>
+						<p class="font-bold">Essentials</p>
+					</div>
+				</a>
+
+				<!-- Item 3 -->
+				<!-- <a href="">
+					<div
+						class="flex flex-col justify-center items-center rounded-full"
+					>
+						<img
+							src="https://cdn.shopify.com/s/files/1/0722/2059/files/Web-Tiles_Seeds_8e601676-9693-444b-9622-15d7078fc23b_720x.jpg?v=1686382192"
+							class="h-20 w-20 rounded-full hover:-translate-y-0.5 transition duration-150"
+							style="
+								border: 5px solid rgb(188, 78, 9);
+							"
+						/>
+						<p class="font-bold">Seeds</p>
+					</div>
+				</a> -->
+
+				<!-- Item 4 -->
+				<a href="./cattles.html">
+					<div
+						class="flex flex-col justify-center items-center"
+					>
+						<img
+							src="https://th.bing.com/th/id/OIP.5uPDzxUun2kP7rkr-K0WnAHaFm?pid=ImgDet&rs=1"
+							class="h-20 w-20 rounded-full hover:-translate-y-0.5 transition duration-150"
+							style="
+								border: 5px solid rgb(188, 78, 9);
+							"
+						/>
+						<p class="font-bold">Cattles</p>
+					</div>
+				</a>
+
+				<!-- Item 5 -->
+				<a href="./doctors.html">
+					<div
+						class="flex flex-col justify-center items-center"
+					>
+						<img
+							src="../css/R.jpeg"
+							class="h-20 w-20 rounded-full bg-black hover:-translate-y-0.5 transition duration-150"
+							style="
+								border: 5px solid rgb(188, 78, 9);
+							"
+						/>
+						<p class="font-bold">Doctors</p>
+					</div>
+				</a>
+				<a href="./Sell.html" class="">
+					<div
+						class="flex flex-col justify-center items-center"
+					>
+						<img
+							src="../css/hey.jpg"
+							class="h-20 w-20 rounded-full bg-black hover:-translate-y-0.5 transition duration-150"
+							style="
+								border: 5px solid rgb(188, 78, 9);
+							"
+						/>
+						<p class="font-bold">Sell Vegetables</p>
+					</div>
+				</a>
+			</div>
+		</section>
+		<!-- ITEMS -->
+		<section>
+			<div
+				class="flex items-center justify-center bg-slate-200"
+			>
+				<h1 class="text-2xl font-bold mx-auto">
+					Our Products
+				</h1>
+			</div>
+			<div
+				id="hook"
+				class="grid grid-cols-3 grid-flow-row gap-9 p-8"
+			>
+				<div
+					class="flex flex-col justify-self-center h-[450px] w-[300px] bg-red-400 rounded-xl p-2"
+				>
+					<div
+						class="h-[43%] w-[100%] bg-transparent rounded-xl flex flex-col p-1">
+						<!-- Name and Price -->
+						<div class="flex justify-between">
+							<h1
+								class="text-md font-bold ml-2 text-white"
+							>
+								Product Name
+							</h1>
+							<h2
+								class="text-lg mr-2 text-yellow-500"
+							>
+								$799
+							</h2>
+						</div>
+						<div
+							class="max-w-full ml-2 h-full overflow-clip text-sm font-thin text-white"
+						>
+							Lorem, ipsum dolor sit amet
+							consectetur adipisicing elit. Error
+							dolor qui ad odit nihil, assumenda
+							quos consequuntur modi. Aliquam,
+							consequatur?
+						</div>
+
+						<button
+							type="button"
+							class="w-full h-8 bg-slate-50 mb-2 rounded-lg text-center"
+						>
+							Add to Cart
+						</button>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Example product container -->
+<footer class="bg-black relative -bottom-20 text-white py-8">
+	<div class="container mx-auto text-center">
+		<p class="mb-2">&copy; 2023 Smart Farm</p>
+		<div class="flex justify-center items-center space-x-4">
+			<a href="#" class="hover:text-gray-300">
+				<i class="fab fa-facebook-f"></i>
+			</a>
+			<a href="#" class="hover:text-gray-300">
+				<i class="fab fa-twitter"></i>
+			</a>
+			<a href="#" class="hover:text-gray-300">
+				<i class="fab fa-instagram"></i>
+			</a>
+		</div>
+		<div class="flex justify-between">
+			<div class="ml-auto mx-10 40px">
+				<a href="https://app.wotnot.io/bot-preview/3hXNk8rWkWsR1656546940955C45974i" ">
+					<img src="../css/whatsapp.png" alt="WhatsApp Icon" width="50" height="50">
+				</a>
+			</div>
+		</div>
+		</div>
+</footer>
+	</body>
+</html>

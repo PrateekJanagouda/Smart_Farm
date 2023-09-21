@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>Chatbot Icon</title>
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <div id="chatbotIcon"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full cursor-pointer">
+        <span class="text-lg">🤖</span>
+    </div>
+
+    <script >
+        const chatbotIcon = document.getElementById("chatbotIcon");
+
+            // Replace 'YOUR_CHATBOT_LINK' with the actual link you want to open
+            const chatbotLink = 'https://app.wotnot.io/chat-widget/4of49wiZMSyQ165514296844qRa8V9Ds';
+
+            chatbotIcon.addEventListener("click", () => {
+                window.open(chatbotLink, '_blank');
+            });
+
+    </script>
+
+    
+</body>
+
+</html>
